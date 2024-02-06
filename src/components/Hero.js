@@ -1,10 +1,10 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from "react-router-dom";
+
 
 export default function Hero() {
-  const { isAuthenticated, loginWithRedirect, user } = useAuth0();
-  const greeting = `Hey ${user?.given_name || user?.nickname || "User"}!`;
+  const { isAuthenticated, user } = useAuth0();
+  const greeting = "Welcome "+ `${user?.given_name || user?.nickname || "User"}!`.toUpperCase();
 
   return (
     <div className="container my-5">

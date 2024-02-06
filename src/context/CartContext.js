@@ -22,7 +22,6 @@ const cartReducer = (state, action) => {
             : item
         ),
       };
-    // Handle other actions like 'CLEAR_CART', etc.
     default:
       return state;
   }

@@ -10,11 +10,11 @@ import MemberCheckout from "./pages/MemberCheckout";
 import { CartProvider } from "./context/CartContext";
 import { WishlistProvider } from "./context/WishlistContext";
 import Footer from "./components/Footer";
-import { AuthProvider } from "./context/AuthContext";
+// import { AuthProvider } from "./context/AuthContext";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import BootCheckout from "./pages/BootCheckout";
 import { Auth0Provider } from "@auth0/auth0-react";
+import Checkout from "./pages/Checkout";
 
 function App() {
   return (
@@ -22,9 +22,9 @@ function App() {
       domain="dev-ilxzbc1fftyek4ls.us.auth0.com"
       clientId="Ue0jOOrIlDND0o0ufcyzzq0Togx7vgYa"
       redirectUri={window.location.origin}
-      useLocalStorage={true} // Enable localStorage for Auth0Provide
+      useLocalStorage={true} 
       cacheLocation="localstorage"    >
-      <AuthProvider>
+      {/* <AuthProvider> */}
         <CartProvider>
           <WishlistProvider>
             <Router>
@@ -39,7 +39,7 @@ function App() {
                     />
                     <Route path="/wishlist" element={<Wishlist />} />
                     <Route path="/cart" element={<Cart />} />
-                    <Route path="/checkout" element={<BootCheckout />} />
+                    <Route path="/checkout" element={<Checkout />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                   </Routes>
@@ -49,7 +49,7 @@ function App() {
             </Router>
           </WishlistProvider>
         </CartProvider>
-      </AuthProvider>
+      {/* </AuthProvider> */}
     </Auth0Provider>
   );
 }

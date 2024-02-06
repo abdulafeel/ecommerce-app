@@ -22,7 +22,6 @@ const wishlistReducer = (state, action) => {
 };
 
 export const WishlistProvider = ({ children }) => {
-  // Load wishlist from localStorage on initialization
   const localStorageWishlist = JSON.parse(
     localStorage.getItem("wishlist") || "[]"
   );
@@ -40,7 +39,6 @@ export const WishlistProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // Save wishlist to localStorage whenever it changes
     localStorage.setItem("wishlist", JSON.stringify(state.wishlistItems));
   }, [state.wishlistItems]);
 

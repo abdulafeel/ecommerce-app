@@ -5,15 +5,19 @@ import { MdOutlineMotionPhotosAuto } from "react-icons/md";
 import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
 import { useAuth0 } from "@auth0/auth0-react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Header = () => {
   const { cart } = useCart();
-  const { wishlist, resetWishlist } = useWishlist();
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+  const { wishlist } = useWishlist();
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   const handleLogout = () => {
-    logout({ returnTo: window.location.origin });
-    resetWishlist();
+    toast.success("Signed out successfully")
+    setTimeout(()=>{
+      logout({ returnTo: window.location.origin });
+    },1000)
   };
 
   const navItems = [
@@ -37,7 +41,7 @@ const Header = () => {
               size={50}
             />
           </Link>
-
+<ToastContainer/>
           <ul className="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             {navItems.map((item, index) => (
               <li key={index}>

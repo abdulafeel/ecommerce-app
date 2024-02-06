@@ -6,8 +6,6 @@ const Home = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Fetch products from your backend or use mock data
-    // For simplicity, using mock data here
     const mockProducts = [
       {
         id: 1,
@@ -32,7 +30,6 @@ const Home = () => {
           "Buy Apple iPhone 15 (256 GB) - Pink. Serious power. Serious value. ",
         image: "15.jpeg",
       },
-      // Add more products
     ];
 
     setProducts(mockProducts);
@@ -42,13 +39,11 @@ const Home = () => {
     <>
       <Hero />
       <div id="products">
-        <div className="container px-4 py-5" id="custom-cards">
+        <div className="container px-4 py-2" id="custom-cards">
           <h2 className="pb-2 border-bottom">Featured products</h2>
         </div>
         <div className="product-list">
-          {/* {products.map((product) => ( */}
             <ProductCard key={products.id} product={products} />
-          {/* ))} */}
         </div>
       </div>
     </>
