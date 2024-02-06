@@ -1,20 +1,24 @@
-import React, { createContext, useContext, useState } from "react";
+// AuthContext.js
+import React, { createContext, useContext } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
 
-  const login = (userData) => setUser(userData);
-  const register = (userData) => setUser(userData);
-  const logout = () => setUser(null);
+  const login = () => {
+    loginWithRedirect();
+  };
 
-  const contextValue = { user, login, register, logout };
+  const handleLogout = () => {
+    logout({ returnTo: window.location.origin });
+  };
+
+  const contextValue = { isAuthenticated, user, login, logout: handleLogout };
 
   return (
-    <AuthContext.Provider value={contextValue}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
   );
 };
 

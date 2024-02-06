@@ -22,9 +22,8 @@ function App() {
       domain="dev-ilxzbc1fftyek4ls.us.auth0.com"
       clientId="Ue0jOOrIlDND0o0ufcyzzq0Togx7vgYa"
       redirectUri={window.location.origin}
-      useLocalStorage={true} // Enable localStorage for Auth0Provider
-      useRefreshTokens={true}
-    >
+      useLocalStorage={true} // Enable localStorage for Auth0Provide
+      cacheLocation="localstorage"    >
       <AuthProvider>
         <CartProvider>
           <WishlistProvider>

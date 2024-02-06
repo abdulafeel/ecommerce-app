@@ -22,14 +22,16 @@ const cartReducer = (state, action) => {
             : item
         ),
       };
-    // Handle other actions like 'REMOVE_FROM_CART', 'CLEAR_CART', etc.
+    // Handle other actions like 'CLEAR_CART', etc.
     default:
       return state;
   }
 };
 
 export const CartProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(cartReducer, { cartItems: [] });
+  const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const [state, dispatch] = useReducer(cartReducer, { cartItems: storedCart });
 
   const addToCart = (item) => dispatch({ type: "ADD_TO_CART", payload: item });
   const removeFromCart = (productId) =>
@@ -50,13 +52,6 @@ export const CartProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) {
-      dispatch({ type: "RESTORE_CART", payload: JSON.parse(storedCart) });
-    }
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state.cartItems));
   }, [state.cartItems]);
 
@@ -68,7 +63,9 @@ export const CartProvider = ({ children }) => {
     getGrandTotal,
   };
 
-  return <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
+  );
 };
 
 export const useCart = () => {

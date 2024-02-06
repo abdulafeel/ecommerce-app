@@ -23,15 +23,15 @@ export default function Hero() {
             experience that puts you in control.
           </p>
           <div className="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-            <Link to="#products" className="btn btn-dark btn-lg px-4 me-md-2 fw-bold">
+            <a href="#products" className="btn btn-dark btn-lg px-4 me-md-2 fw-bold">
               Explore
-            </Link>
+            </a>
           </div>
         </div>
         <div className="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
           <img
             className="rounded-lg-3"
-            src="heroImage.jpg"
+            src="hero.jpg"
             alt=""
             width="720"
           />

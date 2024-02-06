@@ -14,7 +14,7 @@ const Home = () => {
         name: "iPhone 13",
         price: 54999.0,
         description: `Buy Apple iPhone 13 (256 GB) - White. A total powerhouse.`,
-        image: "131.jpg",
+        image: "13.jpeg",
       },
       {
         id: 2,
