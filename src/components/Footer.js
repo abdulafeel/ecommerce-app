@@ -1,11 +1,10 @@
 import React from "react";
 import { MdOutlineMotionPhotosAuto } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { FaUser } from "react-icons/fa";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Footer() {
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const handleLogout = () => {
     logout({ returnTo: window.location.origin });
   };
@@ -36,7 +35,10 @@ export default function Footer() {
           {navItems.map((item, index) => (
             <li key={index} className="nav-item">
               {item.to ? (
-                <Link to={item.to} className="nav-link px-2 text-body-secondary">
+                <Link
+                  to={item.to}
+                  className="nav-link px-2 text-body-secondary"
+                >
                   {item.label}
                 </Link>
               ) : (

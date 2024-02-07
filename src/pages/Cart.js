@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { FaPlus, FaMinus } from "react-icons/fa";
 import { useCart } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
